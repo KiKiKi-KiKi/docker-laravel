@@ -1,6 +1,8 @@
 up:
 	docker-compose up -d
 down:
+	docker-compose down
+down-all:
 	docker-compose down --rmi all --volumes
 create-project:
 	mkdir laravel
@@ -14,3 +16,7 @@ migrate:
 	docker-compose exec app php artisan migrate
 migrate-fresh:
 	docker-compose exec app php artisan migrate:fresh --seed
+destroy:
+	@make down-all
+	rm -rf ./docker/mysql/data
+	rm -rf ./laravel
