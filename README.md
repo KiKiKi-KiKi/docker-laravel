@@ -44,6 +44,24 @@ access: `localhost:80`
 $ docker-compose stop
 ```
 
+### Tips
+
+##### 自動的に作られるデータベース名を変更したい
+
+`make create-project` or `docker-compose build` をすると自動的に `laravel_local` というデータベースが作成されますがこれを変更したい場合は下記を変更してください。
+
+1. `.env` の `DB_DATABASE` を作成したいデータベース名に変更  
+  ```config
+  DB_DATABASE={datanase name}
+  ```
+1. `/docker/mysql//init/1_dd.sql` 内のSQL を上記の `.env` で指定したデータベース名に変更  
+  ```sql
+  CREATE DATABASE IF NOT EXISTS {datanase name};
+  ```
+
+上記を変更して `/laravel` ディレクトリ, `/docker/mysql/data` ディレクトリを削除の上改めて `make create-project` or `docker-compose build` でプロジェクトを作成し直してください。  
+`make destroy` で docker コンテナと上記ディレクトリをまるっと削除することも出来ます。
+
 ---
 
 # Laravel
