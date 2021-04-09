@@ -78,7 +78,7 @@ $ docker-compose exec app php artisan make:migration <file name> -create=<table 
 
 ```config
 $ docker-compose exec app bash
-> php artisan make:migration <file name> -create=<table name>
+> php artisan make:migration <file name> --create=<table name>
 ```
 
 `/database/migrations` ディレクトリ内に migrate ファイルが作成されるので、テーブルのカラムを設定する
