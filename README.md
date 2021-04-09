@@ -89,7 +89,7 @@ DB_ROOT_PASSWORD=<root user passdord>
 テーブル名は **複数形** で指定する
 
 ```config
-$ docker-compose exec app php artisan make:migration <file name> -create=<table name>
+$ docker-compose exec app php artisan make:migration <file name> --create=<table name>
 ```
 
 ##### app コンテナに入って実行する
