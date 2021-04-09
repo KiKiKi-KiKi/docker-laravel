@@ -46,6 +46,24 @@ $ docker-compose stop
 
 ### Tips
 
+##### MySQL のユーザーとパスワードを変更したい
+
+デフォルトでは下記のように設定されています。
+
+- root user name: `root`
+- root user password: `root`
+- service user name: `phper`
+- service user password: `secret`
+
+これを変更したい場合は `.env` を編集してください
+
+```config
+DB_USER=<service user name>
+DB_PASSWORD=<service user password>
+DB_ROOT_USER=<root user name>
+DB_ROOT_PASSWORD=<root user passdord>
+```
+
 ##### 自動的に作られるデータベース名を変更したい
 
 `make create-project` or `docker-compose build` をすると自動的に `laravel_local` というデータベースが作成されますがこれを変更したい場合は下記を変更してください。
@@ -138,7 +156,7 @@ $ docker-compose exec app bash
 
 db コンテナ内の MySQL に接続
 ```config
-$ docker-compose exec db bash -c 'mysql -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE'
+$ docker-compose exec db bash -c 'mysql -u $MYSQL_USER -p $MYSQL_PASSWORD $MYSQL_DATABASE'
 ```
 
 ##### MySQL のデータを作成し直す
