@@ -19,8 +19,7 @@ ENV PATH $PATH:/composer/vendor/bin
 
 # composer 高速化
 RUN composer config -g process-timeout 3600 && \
-  composer config -g repos.packagist composer https://packagist.jp && \
-  composer global require hirak/prestissimo
+  composer config -g repos.packagist composer https://packagist.jp
 
 COPY ./php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY php.ini /usr/local/etc/php/php.ini
