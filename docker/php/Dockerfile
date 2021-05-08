@@ -10,6 +10,10 @@ RUN mkdir /var/run/php-fpm && \
 # install PHP extenstionslocaledef -f UTF-8 -i en_US en_US.UTF-8
 RUN docker-php-ext-install intl pdo_mysql mbstring zip bcmath
 
+# nodejs
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
+
 # composer
 COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 
