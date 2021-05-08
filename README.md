@@ -1,4 +1,8 @@
-# docker Laravel v.7
+# docker Laravel v.8
+
+- PHP: `php:8.0-fpm-buster`
+- MySQL: 8.0
+- Laravel: `8.*`
 
 構成
 ```
@@ -24,12 +28,31 @@ $ cp .env.sample .env
 
 #### Create new Laravel project
 
+[mac]
 ```config
 $ make create-project
 ```
 
-`/laravel` 内に laravel のプロジェクトを作成します。  
-作成し直す場合は `/laravel` と `/docker/mysql/data/` ディレクトリ内を空にしてください。
+[Windows]
+```sh
+$ mkdir laravel
+$ docker-compose build --no-cache --force-rm
+$ docker-compose up -d
+$ docker-compose exec app composer create-project --prefer-dist laravel/laravel . 8.*
+$ docker-compose exec app php artisan key:generate
+$ docker-compose exec app php artisan storage:link
+$ docker-compose exec app chmod -R 777 storage bootstrap/cache
+```
+
+`/laravel` 内に laravel のプロジェクトを作成されます  
+作成し直す場合は `/laravel` と `/docker/mysql/data/` ディレクトリ内を空にしてください。  
+
+MAC の場合下記コマンドで初期化が可能です
+
+[mac]
+```sh
+$ make destroy
+```
 
 #### Start server
 
@@ -45,6 +68,19 @@ $ docker-compose stop
 ```
 
 ### Tips
+
+#### Laravel のバージョンを変更したい
+
+`make create-project` では `Makefile` にかかれてあるコマンドを実行しています。  
+Laravel のプロジェクトを作成している下記コマンド部分を変更してください。
+
+e.g. Laravel v6 系を使いたい場合
+`Makefile`
+```diff
+create-laravel:
+- docker-compose exec app composer create-project --prefer-dist laravel/laravel . 8.*
++ docker-compose exec app composer create-project --prefer-dist laravel/laravel . 6.*
+```
 
 ##### MySQL のユーザーとパスワードを変更したい
 
@@ -169,9 +205,27 @@ $ docker-compose build
 
 #### MySQLAdmin
 
-localhost:8888
+access: `localhost:8888`
 
-## Laravel サーバー要件
+--- 
+
+## Laravel v8 サーバ要件
+
+https://readouble.com/laravel/8.x/ja/deployment.html#server-requirements
+
+- PHP7.3以上
+- BCMath PHP 拡張
+- Ctype PHP 拡張
+- Fileinfo PHP 拡張
+- JSON PHP 拡張
+- Mbstring PHP 拡張
+- OpenSSL PHP 拡張
+- PDO PHP 拡張
+- Tokenizer PHP 拡張
+- XML PHP 拡張
+
+
+## Laravel v7 サーバー要件
 
 https://readouble.com/laravel/7.x/ja/installation.html#server-requirements
 
