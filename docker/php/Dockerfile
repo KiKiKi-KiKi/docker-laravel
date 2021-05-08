@@ -11,7 +11,8 @@ RUN mkdir /var/run/php-fpm && \
 RUN docker-php-ext-install intl pdo_mysql mbstring zip bcmath
 
 # composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
+
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
 ENV PATH $PATH:/composer/vendor/bin
