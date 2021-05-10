@@ -1,9 +1,9 @@
-# docker Laravel v.8
+# docker Laravel v.6 (PHP v7.4)
 
-- PHP: `php:8.0-fpm-buster`
+- PHP: `php:7.4-fpm-buster`
 - MySQL: `8.0`
 - node.js: `14.*`
-- Laravel: `8.*`
+- Laravel: `6.*`
 
 構成
 ```
@@ -39,7 +39,7 @@ $ make create-project
 $ mkdir laravel
 $ docker-compose build --no-cache --force-rm
 $ docker-compose up -d
-$ docker-compose exec app composer create-project --prefer-dist laravel/laravel . 8.*
+$ docker-compose exec app composer create-project --prefer-dist laravel/laravel . 6.*
 $ docker-compose exec app php artisan key:generate
 $ docker-compose exec app php artisan storage:link
 $ docker-compose exec app chmod -R 777 storage bootstrap/cache
@@ -75,12 +75,12 @@ $ docker-compose stop
 `make create-project` では `Makefile` にかかれてあるコマンドを実行しています。  
 Laravel のプロジェクトを作成している下記コマンド部分を変更してください。
 
-e.g. Laravel v6 系を使いたい場合
+e.g. Laravel v7系 を使いたい場合
 `Makefile`
 ```diff
 create-laravel:
-- docker-compose exec app composer create-project --prefer-dist laravel/laravel . 8.*
-+ docker-compose exec app composer create-project --prefer-dist laravel/laravel . 6.*
+- docker-compose exec app composer create-project --prefer-dist laravel/laravel . 6.*
++ docker-compose exec app composer create-project --prefer-dist laravel/laravel . 7.*
 ```
 
 ##### MySQL のユーザーとパスワードを変更したい
@@ -209,6 +209,21 @@ $ docker-compose build
 access: `localhost:8888`
 
 --- 
+
+## Laravel v6 サーバ要件
+
+https://readouble.com/laravel/6.x/ja/installation.html#server-requirements
+
+- PHP >= 7.2.0
+- BCMath PHP拡張
+- Ctype PHP拡張
+- Fileinfo PHP拡張
+- JSON PHP拡張
+- Mbstring PHP拡張
+- OpenSSL PHP拡張
+- PDO PHP拡張
+- Tokenizer PHP拡張
+- XML PHP拡張
 
 ## Laravel v8 サーバ要件
 
