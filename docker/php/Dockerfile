@@ -1,8 +1,8 @@
-FROM php:8.0-fpm-buster
+FROM php:7.4-fpm-buster
 SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 
 RUN apt-get update
-RUN  apt-get install -y vim git mariadb-client libicu-dev libonig-dev libzip-dev unzip locales
+RUN apt-get install -y vim git mariadb-client libicu-dev libonig-dev libzip-dev unzip locales
 RUN apt-get clean
 RUN mkdir /var/run/php-fpm && \
   mkdir /var/log/php
