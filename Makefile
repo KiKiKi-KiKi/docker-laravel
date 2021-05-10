@@ -5,7 +5,7 @@ down:
 down-all:
 	docker-compose down --rmi all --volumes
 create-laravel:
-	docker-compose exec app composer create-project --prefer-dist laravel/laravel . 8.*
+	docker-compose exec app composer create-project --prefer-dist laravel/laravel . 6.*
 setup-laravel:
 	docker-compose exec app php artisan key:generate
 	docker-compose exec app php artisan storage:link
