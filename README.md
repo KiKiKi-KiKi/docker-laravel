@@ -1,7 +1,8 @@
 # docker Laravel v.8
 
 - PHP: `php:8.0-fpm-buster`
-- MySQL: 8.0
+- MySQL: `8.0`
+- node.js: `14.*`
 - Laravel: `8.*`
 
 構成
