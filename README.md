@@ -24,7 +24,7 @@
 ## SETUP
 
 ```config
-$ cp .env.sample .env
+$ cp .env.example .env
 ```
 
 #### Create new Laravel project
