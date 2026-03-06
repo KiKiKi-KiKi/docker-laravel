@@ -1,11 +1,31 @@
-**/node_modules
-**/log/*
-
-.env
-
 .DS_Store
+Thumbs.db
+*.pem
+
+# Local / Docker
+.env
+*.env.*
+!.env.example
+
+# database
+docker/mysql/data/
+
+# log
+**/log/*
+docker/mysql/log/
+docker/nginx/log/
+
+# frontend
+**/node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# IDE
+*.swp
+*.swo
+.idea/
+.vscode/*
+!.vscode/settings.sample.json
 
 !.gitkeep
